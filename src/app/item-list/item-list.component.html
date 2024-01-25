@@ -1,0 +1,25 @@
+<div class="content">
+  <form name="formList" (ngSubmit)="addItem()">
+    <div class="add-item">
+      <input maxlength="6" name="item" type="text" [(ngModel)]="newItem.name" placeholder="Nome do item">
+      <button type="submit">Adicionar</button>
+    </div>
+  </form>
+  <div class="card">
+    <ul>
+      <li *ngFor="let item of items; let i = index">
+        <ng-container *ngIf="!item.isEditing; else editMode">
+          <h3 (click)="editItem(item)">{{ item.name }}</h3>
+        </ng-container>
+        <ng-template #editMode>
+          <input [(ngModel)]="item.name" (blur)="editItem(item)" />
+        </ng-template>
+        <div class="actions">
+          <i class="fas fa-edit edit-icon" (click)="editItem(item)"></i>
+          <i class="fas fa-trash delete-icon" (click)="deleteItem(i)"></i>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+  
