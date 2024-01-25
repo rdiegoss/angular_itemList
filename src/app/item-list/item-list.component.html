@@ -12,7 +12,7 @@
           <h3 (click)="editItem(item)">{{ item.name }}</h3>
         </ng-container>
         <ng-template #editMode>
-          <input [(ngModel)]="item.name" (blur)="editItem(item)" />
+          <input [(ngModel)]="item.name" (blur)="saveItem(item)" (keydown.enter)="saveItem(item)" />
         </ng-template>
         <div class="actions">
           <i class="fas fa-edit edit-icon" (click)="editItem(item)"></i>

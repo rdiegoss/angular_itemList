@@ -39,6 +39,10 @@ export class ItemListComponent implements OnInit {
     }
   }
 
+  saveItem(item: Item) {
+    item.isEditing = false;
+  }
+
   deleteItem(index: number) {
     this.items.splice(index, 1);
   }

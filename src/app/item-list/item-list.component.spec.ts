@@ -1,57 +1,54 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-
 import { ItemListComponent } from './item-list.component';
 
 describe('ItemListComponent', () => {
   let component: ItemListComponent;
   let fixture: ComponentFixture<ItemListComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ItemListComponent],
-      imports: [FormsModule, CommonModule],
-    }).compileComponents();
+  beforeEach(waitForAsync(() => {
+    TestBed.configureTestingModule({
+      imports: [FormsModule, CommonModule, ItemListComponent],
+    })
+    .compileComponents();
+  }));
 
+  beforeEach(() => {
     fixture = TestBed.createComponent(ItemListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should add an item', () => {
-    const initialItemsLength = component.items.length;
+  it('should add a new item to the list', () => {
+    component.newItem.name = 'Test Item';
     component.addItem();
-    expect(component.items.length).toBe(initialItemsLength + 1);
+    expect(component.items.length).toBe(1);
+    expect(component.items[0].name).toBe('Test Item');
   });
 
-  it('should edit an item', () => {
-    const item = { id: 1, name: 'Item 1', isEditing: false };
-    component.items.push(item);
-
-    component.editItem(item);
-    expect(item.isEditing).toBe(true);
-
-    component.editItem(item);
-    expect(item.isEditing).toBe(false);
+  it('should edit an item in the list', () => {
+    const testItem = { id: 1, name: 'Test Item', isEditing: false };
+    component.items.push(testItem);
+    component.editItem(testItem);
+    expect(testItem.isEditing).toBe(true);
   });
 
-  it('should toggle edit mode', () => {
-    const item = { id: 1, name: 'Item 1', isEditing: false };
-    component.editItem(item);
-    expect(item.isEditing).toBe(true);
+  it('should save an edited item in the list', () => {
+    const testItem = { id: 1, name: 'Test Item', isEditing: true };
+    component.items.push(testItem);
+    component.saveItem(testItem);
+    expect(testItem.isEditing).toBe(false);
   });
 
-  it('should delete an item', () => {
-    const item = { id: 1, name: 'Item 1', isEditing: false };
-    component.items.push(item);
-    
-    const initialItemsLength = component.items.length;
+  it('should delete an item from the list', () => {
+    const testItem = { id: 1, name: 'Test Item', isEditing: false };
+    component.items.push(testItem);
     component.deleteItem(0);
-    expect(component.items.length).toBe(initialItemsLength - 1);
+    expect(component.items.length).toBe(0);
   });
 });
