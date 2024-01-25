@@ -1,5 +1,5 @@
 VIDEO DEMO:
-https://github.com/rdiegoss/angular_itemList/assets/10976074/57b68f18-8d4b-4c8e-b4c1-ab807430f810
+[Vídeo do projeto](https://vimeo.com/906411980?share=copy)
 
 Tests:
 <img width="889" alt="Screenshot 2024-01-25 at 12 43 57" src="https://github.com/rdiegoss/angular_itemList/assets/10976074/a04ae1a5-8cd3-4c7a-9f92-6f7fd1be5dc5">
