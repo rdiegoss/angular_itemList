@@ -1,3 +1,9 @@
+VIDEO DEMO:
+https://github.com/rdiegoss/angular_itemList/assets/10976074/57b68f18-8d4b-4c8e-b4c1-ab807430f810
+
+Tests:
+<img width="889" alt="Screenshot 2024-01-25 at 12 43 57" src="https://github.com/rdiegoss/angular_itemList/assets/10976074/a04ae1a5-8cd3-4c7a-9f92-6f7fd1be5dc5">
+
 # ItemList
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.1.
